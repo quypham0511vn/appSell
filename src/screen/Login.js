@@ -14,23 +14,22 @@ import account from "../fakedata/account";
 export default function Login({ navigation }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const goLogin = () => {
-    if (username.trim() === "" ) {
+    if (username.trim() === "") {
       alert("Tài khoản không được để trống!");
     }
-    if (password .trim()=== "") {
+    if (password.trim() === "") {
       alert("Mật khẩu  không được để trống!");
     }
-    if (username .trim() !=account.username) {
+    if (username.trim() != account.username) {
       alert("Tài khoản sai!");
-     }
-    if (password .trim() !=account.password ) {
+    }
+    if (password.trim() != account.password) {
       alert("Mật khẩu  sai!");
-     }
-    if (username===account.username && password=== account.password) {
-    return  navigation.navigate("ProductScreen");
-    } 
+    }
+    if (username === account.username && password === account.password) {
+      return navigation.navigate("ProductScreen");
+    }
   };
   return (
     <TouchableWithoutFeedback>
@@ -39,7 +38,9 @@ export default function Login({ navigation }) {
           style={styles.imgLogo}
           source={require("../../src/img/logoThuongHieu.png")}
         />
-        <Text style={{ color:"#800080", fontSize: 35, marginTop: 0 }}>Đăng nhập</Text>
+        <Text style={{ color: "#800080", fontSize: 35, marginTop: 0 }}>
+          Đăng nhập
+        </Text>
         <TextInput
           value={username}
           onChangeText={(text) => setUsername(text)}

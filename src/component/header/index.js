@@ -35,10 +35,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 27,
     marginTop: 2,
-    fontWeight:"bold",
-    color:"#7FFFD4"
+    fontWeight: "bold",
+    color: "#7FFFD4",
   },
- 
 });
 
 export default Header;

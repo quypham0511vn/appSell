@@ -6,12 +6,18 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Button,
 } from "react-native";
 import data from "../fakedata/listproduct";
 import Header from "../component/header/index.js";
-function ItemList({ data }) {
+import { navigation } from "@react-navigation/native";
+function ItemList({ navigation, data }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("ProductDetailScreen", { idProduct: data.id })
+      }
+    >
       <View style={styles.coverItem}>
         <View style={styles.coverImage}>
           <Image
@@ -44,13 +50,15 @@ function Product({ navigation }) {
             navigation.navigate("LoginScreen");
           }}
         >
-          <Text style={styles.backtext}>Trở lại</Text>
+          <Text style={styles.backtext}>Quay về</Text>
         </TouchableOpacity>
       </View>
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ItemList data={item}></ItemList>}
+        renderItem={({ item }) => (
+          <ItemList navigation={navigation} data={item}></ItemList>
+        )}
       ></FlatList>
     </View>
   );
@@ -101,12 +109,11 @@ const styles = StyleSheet.create({
     color: "#6B8E23",
   },
   backbtn: {
-    fontSize: 20,
     backgroundColor: "#ADD8E6",
   },
   backtext: {
-    fontSize: 20,
-    margin: 2,
+    fontSize: 18,
+    margin: 1,
     fontWeight: "bold",
     color: "#2E8B57",
   },
